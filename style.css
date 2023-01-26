@@ -35,6 +35,10 @@
     border-bottom-right-radius: 0%;
     height: 25px;
     padding: 5px;
+    padding-left: 9px;
+  }
+  input:focus{
+    outline: none;
   }
   #search-glass{
     width: 25px;

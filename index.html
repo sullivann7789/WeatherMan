@@ -3,7 +3,6 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.5/dist/css/foundation.min.css" crossorigin="anonymous">
-        <link href="api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}">
         <link rel="stylesheet" href="style.css">
     </head>
     <div class="hero-full-screen">
@@ -23,7 +22,7 @@
         <div class="middle-content-section">
           <h1>The Weather Man</h1>
           <form>
-            <img id="search-glass" src="445-4451436_search-magnifying-glass-icon-png.jpg"><input><button id="go" >Go</button>
+            <img id="search-glass" src="445-4451436_search-magnifying-glass-icon-png.jpg"><input id="input" placeholder="City"><button id="go" >Go</button>
           </form>
           <button class="button small">Saved Locations</button>
         </div>
@@ -37,7 +36,7 @@
       <div id="main-content-section" data-magellan-target="main-content-section">
         <div class="marketing-site-content-section">
             <div class="marketing-site-content-section-img">
-              <img src="https://images.pexels.com/photos/256046/pexels-photo-256046.jpeg?h=350&auto=compress&cs=tinysrgb" alt="" />
+              <img/>
             </div>
             <div class="marketing-site-content-section-block">
               <h3 class="marketing-site-content-section-block-header">User Input City</h3>
@@ -57,5 +56,5 @@
           
       </div>
       
-      
+      <script src="java.js"></script>
 </html>
