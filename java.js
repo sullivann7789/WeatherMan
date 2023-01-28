@@ -1,10 +1,11 @@
 var usercity = document.getElementById('input');
 var city = usercity.value;
+var cityencoded = encodeURIComponent(city);
 var MrWeatherManKey = "192a57d57d5d52c033c3ff8f0bae517c";
 var button = document.getElementById('go');
-var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + MrWeatherManKey + "&units=imperial"
+var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityencoded + "&appid=" + MrWeatherManKey + "&units=imperial"
 var div = document.getElementsByClassName('marketing-site-content-section-block');
-var forecastqueryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + MrWeatherManKey + "&units=imperial"
+var forecastqueryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityencoded + "&appid=" + MrWeatherManKey + "&units=imperial"
 
 
 
@@ -31,11 +32,19 @@ fetch(queryURL).then(function(response) {
         //listings.innerHTML = temp;
         
     //}
+    var checkspace = /\s/g.test(city);
+    if (checkspace !== true){
     $("h3").text(city);
+    } else if (checkspace === true) {
+       
+       console.log(cityencoded);
+       $("h3").text(city);
+
+    }
     $("#firstcity").text("temperature: " + temp + " F \n feels like: " + feelslike +  " F \n min temp: " + tempmin + " F \n max temp: " + tempmax + " F \n pressure: " + pressure + "\n humidity: " + humidity + " %");
     console.log(data);
 })
-});
+},{once:true});
 
 button.addEventListener('click', function(event){
     event.preventDefault();
@@ -114,7 +123,7 @@ button.addEventListener('click', function(event){
         console.log(data);
        }
     })
-    });
+    },{once:true});
 
 /*fetch("http://api.openweathermap.org/data/2.5/weather?q=houston&appid=192a57d57d5d52c033c3ff8f0bae517c").then(function(event){
     return event.json();
