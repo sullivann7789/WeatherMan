@@ -159,6 +159,26 @@
   .marketing-site-content-section .marketing-site-content-section-img img {
     width: 100%;
   }
+  .fiveday {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .day-5{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    font-weight: 400;
+    width: 200px;
+    height: 300px;
+  }
+
+  h4{
+    text-align: center;
+  }
+
   
   @media screen and (min-width: 40em) {
     .marketing-site-content-section .marketing-site-content-section-img {
