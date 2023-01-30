@@ -191,9 +191,6 @@
   
   .marketing-site-content-section .marketing-site-content-section-block {
     padding: 1rem;
-    -webkit-flex: 1 0 100%;
-        -ms-flex: 1 0 100%;
-            flex: 1 0 100%;
     -webkit-align-self: stretch;
         -ms-flex-item-align: stretch;
             align-self: stretch;
@@ -210,13 +207,14 @@
     -webkit-align-items: flex-start;
         -ms-flex-align: start;
             align-items: flex-start;
+    width: 100%;
   }
   
   @media screen and (min-width: 40em) {
     .marketing-site-content-section .marketing-site-content-section-block {
-      -webkit-flex: 1 0 50%;
-          -ms-flex: 1 0 50%;
-              flex: 1 0 50%;
+      -webkit-flex: 1 0 100%;
+          -ms-flex: 1 0 100%;
+              flex: 1 0 100%;
       padding: 2rem;
     }
   }
