@@ -1,12 +1,12 @@
 var usercity = document.getElementById('input');
 var city = usercity.value;
 var cityencoded = encodeURIComponent(city);
+console.log(cityencoded);
 var MrWeatherManKey = "192a57d57d5d52c033c3ff8f0bae517c";
 var button = document.getElementById('go');
 var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityencoded + "&appid=" + MrWeatherManKey + "&units=imperial"
 var div = document.getElementsByClassName('marketing-site-content-section-block');
 var forecastqueryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityencoded + "&appid=" + MrWeatherManKey + "&units=imperial"
-
 
 
 button.addEventListener('click', function(event){
@@ -53,64 +53,80 @@ button.addEventListener('click', function(event){
     })
     .then(function(data) {
        for (let i = 0; i < 9; i++) {
+      
          //  var fivedaycast = parseresults.list[i].main
         var weatherresults = JSON.stringify(data);
         var parseresults = JSON.parse(weatherresults);
+        var timezone = data.city.timezone;
+        var day1icon= JSON.stringify(parseresults.list[8].weather[0].icon)
+        var day1img = day1icon.replace(/\"/g, "");
         var day1 = {
-            temp: JSON.stringify(parseresults.list[0].main.temp),
-            feelslike: JSON.stringify(parseresults.list[0].main.feels_like),
-            tempmax: JSON.stringify(parseresults.list[0].main.temp_max),
-            tempmin: JSON.stringify(parseresults.list[0].main.temp_min),
-            humidity: JSON.stringify(parseresults.list[0].main.humidity), 
-            clouds: JSON.stringify(parseresults.list[0].weather[0].description),
-            windspeed: JSON.stringify(parseresults.list[0].wind.speed),
-            windgust: JSON.stringify(parseresults.list[0].wind.gust)
+            temp: JSON.stringify(parseresults.list[8].main.temp),
+            feelslike: JSON.stringify(parseresults.list[8].main.feels_like),
+            tempmax: JSON.stringify(parseresults.list[8].main.temp_max),
+            tempmin: JSON.stringify(parseresults.list[8].main.temp_min),
+            humidity: JSON.stringify(parseresults.list[8].main.humidity), 
+            clouds: JSON.stringify(parseresults.list[8].weather[0].description),
+            windspeed: JSON.stringify(parseresults.list[8].wind.speed),
+            windgust: JSON.stringify(parseresults.list[8].wind.gust)
             }
+        var day2icon= JSON.stringify(parseresults.list[16].weather[0].icon)
+        var day2img = day2icon.replace(/\"/g, "");    
         var day2 = {
-            temp: JSON.stringify(parseresults.list[1].main.temp),
-            feelslike: JSON.stringify(parseresults.list[1].main.feels_like),
-            tempmax: JSON.stringify(parseresults.list[1].main.temp_max),
-            tempmin: JSON.stringify(parseresults.list[1].main.temp_min),
-            humidity: JSON.stringify(parseresults.list[1].main.humidity), 
-            clouds: JSON.stringify(parseresults.list[1].weather[0].description),
-            windspeed: JSON.stringify(parseresults.list[1].wind.speed),
-            windgust: JSON.stringify(parseresults.list[1].wind.gust)
+            temp: JSON.stringify(parseresults.list[16].main.temp),
+            feelslike: JSON.stringify(parseresults.list[16].main.feels_like),
+            tempmax: JSON.stringify(parseresults.list[16].main.temp_max),
+            tempmin: JSON.stringify(parseresults.list[16].main.temp_min),
+            humidity: JSON.stringify(parseresults.list[16].main.humidity), 
+            clouds: JSON.stringify(parseresults.list[16].weather[0].description),
+            icon: JSON.stringify(parseresults.list[16].weather[0].icon),
+            windspeed: JSON.stringify(parseresults.list[16].wind.speed),
+            windgust: JSON.stringify(parseresults.list[16].wind.gust)
         }
+        var day3icon= JSON.stringify(parseresults.list[24].weather[0].icon)
+        var day3img = day3icon.replace(/\"/g, "");
         var day3 = {
-            temp: JSON.stringify(parseresults.list[2].main.temp),
-            feelslike: JSON.stringify(parseresults.list[2].main.feels_like),
-            tempmax: JSON.stringify(parseresults.list[2].main.temp_max),
-            tempmin: JSON.stringify(parseresults.list[2].main.temp_min),
-            humidity: JSON.stringify(parseresults.list[2].main.humidity), 
-            clouds: JSON.stringify(parseresults.list[2].weather[0].description),
-            windspeed: JSON.stringify(parseresults.list[2].wind.speed),
-            windgust: JSON.stringify(parseresults.list[2].wind.gust)
+            temp: JSON.stringify(parseresults.list[24].main.temp),
+            feelslike: JSON.stringify(parseresults.list[24].main.feels_like),
+            tempmax: JSON.stringify(parseresults.list[24].main.temp_max),
+            tempmin: JSON.stringify(parseresults.list[24].main.temp_min),
+            humidity: JSON.stringify(parseresults.list[24].main.humidity), 
+            clouds: JSON.stringify(parseresults.list[24].weather[0].description),
+            icon: JSON.stringify(parseresults.list[24].weather[0].icon),
+            windspeed: JSON.stringify(parseresults.list[24].wind.speed),
+            windgust: JSON.stringify(parseresults.list[24].wind.gust)
         }
+        var day4icon= JSON.stringify(parseresults.list[32].weather[0].icon)
+        var day4img = day4icon.replace(/\"/g, "");
         var day4 = {
-            temp: JSON.stringify(parseresults.list[3].main.temp),
-            feelslike: JSON.stringify(parseresults.list[3].main.feels_like),
-            tempmax: JSON.stringify(parseresults.list[3].main.temp_max),
-            tempmin: JSON.stringify(parseresults.list[3].main.temp_min),
-            humidity: JSON.stringify(parseresults.list[3].main.humidity), 
-            clouds: JSON.stringify(parseresults.list[3].weather[0].description),
-            windspeed: JSON.stringify(parseresults.list[3].wind.speed),
-            windgust: JSON.stringify(parseresults.list[3].wind.gust)
+            temp: JSON.stringify(parseresults.list[32].main.temp),
+            feelslike: JSON.stringify(parseresults.list[32].main.feels_like),
+            tempmax: JSON.stringify(parseresults.list[32].main.temp_max),
+            tempmin: JSON.stringify(parseresults.list[32].main.temp_min),
+            humidity: JSON.stringify(parseresults.list[32].main.humidity), 
+            clouds: JSON.stringify(parseresults.list[32].weather[0].description),
+            icon: JSON.stringify(parseresults.list[32].weather[0].icon).replace(/\"/g, ""),
+            windspeed: JSON.stringify(parseresults.list[32].wind.speed),
+            windgust: JSON.stringify(parseresults.list[32].wind.gust)
         }
+        var day5icon= JSON.stringify(parseresults.list[39].weather[0].icon)
+        var day5img = day5icon.replace(/\"/g, "");
         var day5 = {
-            temp: JSON.stringify(parseresults.list[4].main.temp),
-            feelslike: JSON.stringify(parseresults.list[4].main.feels_like),
-            tempmax: JSON.stringify(parseresults.list[4].main.temp_max),
-            tempmin: JSON.stringify(parseresults.list[4].main.temp_min),
-            humidity: JSON.stringify(parseresults.list[4].main.humidity), 
-            clouds: JSON.stringify(parseresults.list[4].weather[0].description),
-            windspeed: JSON.stringify(parseresults.list[4].wind.speed),
-            windgust: JSON.stringify(parseresults.list[4].wind.gust)
+            temp: JSON.stringify(parseresults.list[39].main.temp),
+            feelslike: JSON.stringify(parseresults.list[39].main.feels_like),
+            tempmax: JSON.stringify(parseresults.list[39].main.temp_max),
+            tempmin: JSON.stringify(parseresults.list[39].main.temp_min),
+            humidity: JSON.stringify(parseresults.list[39].main.humidity), 
+            clouds: JSON.stringify(parseresults.list[39].weather[0].description),
+            icon: JSON.stringify(parseresults.list[39].weather[0].icon),
+            windspeed: JSON.stringify(parseresults.list[39].wind.speed),
+            windgust: JSON.stringify(parseresults.list[39].wind.gust)
         }
-        $(".fiveday").html("<div class='day-5'>" + "<h4> Day 1</h4>" + "<br>"+ "Temperature: " + day1.temp + "<br>" + "Min. Temperature: " + day1.tempmin + "<br>" + "Max. Temperature: " + day1.tempmax + "<br>" + "Feels Like: " + day1.feelslike + "<br>" + "Clouds: " + day1.clouds + "<br>" + "Humidity: " + day1.humidity + "<br>" + "Windspeed: " + day1.windspeed + "<br>" + "Windgust: " + day1.windgust +"</div>");
-        $(".fiveday").append("<div class='day-5'>" +"<h4> Day 2</h4>" + "<br>"+  "Temperature: " + day2.temp + "<br>" + "Min. Temperature: " + day2.tempmin + "<br>" + "Max. Temperature: " + day2.tempmax + "<br>" + "Feels Like: " + day2.feelslike + "<br>" + "Clouds: " + day2.clouds + "<br>" + "Humidity: " + day2.humidity + "<br>" + "Windspeed: " + day2.windspeed + "<br>" + "Windgust: " + day2.windgust +"</div>");
-        $(".fiveday").append("<div class='day-5'>" +"<h4> Day 3</h4>" + "<br>"+  "Temperature: " + day3.temp + "<br>" + "Min. Temperature: " + day3.tempmin + "<br>" + "Max. Temperature: " + day3.tempmax + "<br>" + "Feels Like: " + day3.feelslike + "<br>" + "Clouds: " + day3.clouds + "<br>" + "Humidity: " + day3.humidity + "<br>" + "Windspeed: " + day3.windspeed + "<br>" + "Windgust: " + day3.windgust +"</div>");
-        $(".fiveday").append("<div class='day-5'>" +"<h4> Day 4</h4>" + "<br>"+  "Temperature: " + day4.temp + "<br>" + "Min. Temperature: " + day4.tempmin + "<br>" + "Max. Temperature: " + day4.tempmax + "<br>" + "Feels Like: " + day4.feelslike + "<br>" + "Clouds: " + day4.clouds + "<br>" + "Humidity: " + day4.humidity + "<br>" + "Windspeed: " + day4.windspeed + "<br>" + "Windgust: " + day4.windgust +"</div>");
-        $(".fiveday").append("<div class='day-5'>" + "<h4> Day 5</h4>" + "<br>"+ "Temperature: " + day5.temp + "<br>" + "Min. Temperature: " + day5.tempmin + "<br>" + "Max. Temperature: " + day5.tempmax + "<br>" + "Feels Like: " + day5.feelslike + "<br>" + "Clouds: " + day5.clouds + "<br>" + "Humidity: " + day5.humidity + "<br>" + "Windspeed: " + day5.windspeed + "<br>" + "Windgust: " + day5.windgust +"</div>");
+        $(".fiveday").html("<div class='day-5'>" + "<h4> Day 1</h4>" + "<br>"+ "<img class='icon' src='http://openweathermap.org/img/wn/" + day1img + "@2x.png'>" + "Temperature: " + day1.temp + "<br>" + "Min. Temperature: " + day1.tempmin + "<br>" + "Max. Temperature: " + day1.tempmax + "<br>" + "Feels Like: " + day1.feelslike + "<br>" + "Clouds: " + day1.clouds + "<br>" + "Humidity: " + day1.humidity + "<br>" + "Windspeed: " + day1.windspeed + "<br>" + "Windgust: " + day1.windgust +"</div>");
+        $(".fiveday").append("<div class='day-5'>" +"<h4> Day 2</h4>" + "<br>"+ "<img class='icon' src='http://openweathermap.org/img/wn/" + day2img + "@2x.png'>"+  "Temperature: " + day2.temp + "<br>" + "Min. Temperature: " + day2.tempmin + "<br>" + "Max. Temperature: " + day2.tempmax + "<br>" + "Feels Like: " + day2.feelslike + "<br>" + "Clouds: " + day2.clouds + "<br>" + "Humidity: " + day2.humidity + "<br>" + "Windspeed: " + day2.windspeed + "<br>" + "Windgust: " + day2.windgust +"</div>");
+        $(".fiveday").append("<div class='day-5'>" +"<h4> Day 3</h4>" + "<br>"+ "<img class='icon' src='http://openweathermap.org/img/wn/" + day3img + "@2x.png'>"+  "Temperature: " + day3.temp + "<br>" + "Min. Temperature: " + day3.tempmin + "<br>" + "Max. Temperature: " + day3.tempmax + "<br>" + "Feels Like: " + day3.feelslike + "<br>" + "Clouds: " + day3.clouds + "<br>" + "Humidity: " + day3.humidity + "<br>" + "Windspeed: " + day3.windspeed + "<br>" + "Windgust: " + day3.windgust +"</div>");
+        $(".fiveday").append("<div class='day-5'>" +"<h4> Day 4</h4>" + "<br>"+ "<img class='icon' src='http://openweathermap.org/img/wn/" + day4img + "@2x.png'>"+  "Temperature: " + day4.temp + "<br>" + "Min. Temperature: " + day4.tempmin + "<br>" + "Max. Temperature: " + day4.tempmax + "<br>" + "Feels Like: " + day4.feelslike + "<br>" + "Clouds: " + day4.clouds + "<br>" + "Humidity: " + day4.humidity + "<br>" + "Windspeed: " + day4.windspeed + "<br>" + "Windgust: " + day4.windgust +"</div>");
+        $(".fiveday").append("<div class='day-5'>" + "<h4> Day 5</h4>" + "<br>"+ "<img class='icon' src='http://openweathermap.org/img/wn/" + day5img + "@2x.png'>"+ "Temperature: " + day5.temp + "<br>" + "Min. Temperature: " + day5.tempmin + "<br>" + "Max. Temperature: " + day5.tempmax + "<br>" + "Feels Like: " + day5.feelslike + "<br>" + "Clouds: " + day5.clouds + "<br>" + "Humidity: " + day5.humidity + "<br>" + "Windspeed: " + day5.windspeed + "<br>" + "Windgust: " + day5.windgust +"</div>");
         var cityresults = document.getElementById('firstcity');
         console.log(parseresults.list);
         //for (let i = 0; i < 5;  i++) {
@@ -120,10 +136,10 @@ button.addEventListener('click', function(event){
             
         //}
        // $(".fiveday").text(day1 + "\n " + day2 + "\n " + day3 + "\n " + day4 + "\n " + day5);
-        console.log(data);
+        console.log(data.city.timezone);
        }
     })
-    },{once:true});
+    });
 
 /*fetch("http://api.openweathermap.org/data/2.5/weather?q=houston&appid=192a57d57d5d52c033c3ff8f0bae517c").then(function(event){
     return event.json();
