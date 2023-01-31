@@ -14,6 +14,7 @@ var MrWeatherManKey = "192a57d57d5d52c033c3ff8f0bae517c";
 var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityencoded + "&appid=" + MrWeatherManKey + "&units=imperial"
 var div = document.getElementsByClassName('marketing-site-content-section-block');
 var forecastqueryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityencoded + "&appid=" + MrWeatherManKey + "&units=imperial"
+function firstcall() {
 fetch(queryURL).then(function(response) {
  return response.json();
 })
@@ -35,8 +36,8 @@ fetch(queryURL).then(function(response) {
         //listings.innerHTML = temp;
         
     //}
-
-    $(".fiveday").append("<div class='marketing-site-content-section-block' id ='"+ city +"'><h3>" + city + "</h3><button id ='save'>Save</button><p>" + "temperature: " + temp + " F \n feels like: " + feelslike +  " F \n min temp: " + tempmin + " F \n max temp: " + tempmax + " F \n pressure: " + pressure + "\n humidity: " + humidity + " %</p></div>");
+    var fiveday = document.getElementById(city)
+    $(".marketing-site-content-section").append("<div class='fiveday "+city+"'><div class='right'id ='"+ city +"'><h3>" + city + "</h3><button id ='save'>Save</button><button id='clear'>Clear</button><p>" + "temperature: " + temp + " F \n feels like: " + feelslike +  " F \n min temp: " + tempmin + " F \n max temp: " + tempmax + " F \n pressure: " + pressure + "\n humidity: " + humidity + " %</p></div></div>");
     //var h3 = document.querySelectorAll("h3");
     //var todaycast = document.querySelectorAll("p");
     //for(i=0; i<10; i++){
@@ -45,17 +46,23 @@ fetch(queryURL).then(function(response) {
      var citiessaved = []
      savebutton.addEventListener('click', function(){
         var citysaved = $("#"+city+"");
-        citiessaved.push(citysaved);
-        var savecity = localStorage.setItem('cities-saved', JSON.stringify(citysaved.prevObject.context.all[24].innerHTML));
-
-
-        console.log(returncityparsed);
+        citiessaved.push(citysaved.prevObject.context.all[24].innerHTML);
+        var savecity = localStorage.setItem('cities-saved', JSON.stringify(citiessaved));
+        console.log(citiessaved);
      })
-})
+     var clearbutton = document.getElementById("clear");
+     clearbutton.addEventListener('click', function(){
+        citiessaved.splice(clearbutton.parentNode, 1);
+        var parentelement = clearbutton.parentElement;
+        parentelement.parentElement.remove();
+     })
 
+})
+}
 
 //button.addEventListener('click', function(event){
    // event.preventDefault();
+   function secondcall(){
     fetch(forecastqueryURL).then(function(response) {
      return response.json();
     })
@@ -130,11 +137,12 @@ fetch(queryURL).then(function(response) {
             windspeed: JSON.stringify(parseresults.list[39].wind.speed),
             windgust: JSON.stringify(parseresults.list[39].wind.gust)
         }
-        $(".fiveday").append("<div class='day-5'>" + "<h4> Day 1</h4>" + "<br>"+ "<img class='icon' src='http://openweathermap.org/img/wn/" + day1img + "@2x.png'>" + "Temperature: " + day1.temp + "<br>" + "Min. Temperature: " + day1.tempmin + "<br>" + "Max. Temperature: " + day1.tempmax + "<br>" + "Feels Like: " + day1.feelslike + "<br>" + "Clouds: " + day1.clouds + "<br>" + "Humidity: " + day1.humidity + "<br>" + "Windspeed: " + day1.windspeed + "<br>" + "Windgust: " + day1.windgust +"</div>");
-        $(".fiveday").append("<div class='day-5'>" +"<h4> Day 2</h4>" + "<br>"+ "<img class='icon' src='http://openweathermap.org/img/wn/" + day2img + "@2x.png'>"+  "Temperature: " + day2.temp + "<br>" + "Min. Temperature: " + day2.tempmin + "<br>" + "Max. Temperature: " + day2.tempmax + "<br>" + "Feels Like: " + day2.feelslike + "<br>" + "Clouds: " + day2.clouds + "<br>" + "Humidity: " + day2.humidity + "<br>" + "Windspeed: " + day2.windspeed + "<br>" + "Windgust: " + day2.windgust +"</div>");
-        $(".fiveday").append("<div class='day-5'>" +"<h4> Day 3</h4>" + "<br>"+ "<img class='icon' src='http://openweathermap.org/img/wn/" + day3img + "@2x.png'>"+  "Temperature: " + day3.temp + "<br>" + "Min. Temperature: " + day3.tempmin + "<br>" + "Max. Temperature: " + day3.tempmax + "<br>" + "Feels Like: " + day3.feelslike + "<br>" + "Clouds: " + day3.clouds + "<br>" + "Humidity: " + day3.humidity + "<br>" + "Windspeed: " + day3.windspeed + "<br>" + "Windgust: " + day3.windgust +"</div>");
-        $(".fiveday").append("<div class='day-5'>" +"<h4> Day 4</h4>" + "<br>"+ "<img class='icon' src='http://openweathermap.org/img/wn/" + day4img + "@2x.png'>"+  "Temperature: " + day4.temp + "<br>" + "Min. Temperature: " + day4.tempmin + "<br>" + "Max. Temperature: " + day4.tempmax + "<br>" + "Feels Like: " + day4.feelslike + "<br>" + "Clouds: " + day4.clouds + "<br>" + "Humidity: " + day4.humidity + "<br>" + "Windspeed: " + day4.windspeed + "<br>" + "Windgust: " + day4.windgust +"</div>");
-        $(".fiveday").append("<div class='day-5'>" + "<h4> Day 5</h4>" + "<br>"+ "<img class='icon' src='http://openweathermap.org/img/wn/" + day5img + "@2x.png'>"+ "Temperature: " + day5.temp + "<br>" + "Min. Temperature: " + day5.tempmin + "<br>" + "Max. Temperature: " + day5.tempmax + "<br>" + "Feels Like: " + day5.feelslike + "<br>" + "Clouds: " + day5.clouds + "<br>" + "Humidity: " + day5.humidity + "<br>" + "Windspeed: " + day5.windspeed + "<br>" + "Windgust: " + day5.windgust +"</div>");
+        var citygrab = document.getElementsByClassName(city);
+        $(".marketing-site-content-section").append("<div class='day-5'>" + "<h4> Day 1</h4>" + "<br>"+ "<img class='icon' src='http://openweathermap.org/img/wn/" + day1img + "@2x.png'>" + "Temperature: " + day1.temp + "<br>" + "Min. Temperature: " + day1.tempmin + "<br>" + "Max. Temperature: " + day1.tempmax + "<br>" + "Feels Like: " + day1.feelslike + "<br>" + "Clouds: " + day1.clouds + "<br>" + "Humidity: " + day1.humidity + "<br>" + "Windspeed: " + day1.windspeed + "<br>" + "Windgust: " + day1.windgust +"</div>");
+        $(".marketing-site-content-section").append("<div class='day-5'>" +"<h4> Day 2</h4>" + "<br>"+ "<img class='icon' src='http://openweathermap.org/img/wn/" + day2img + "@2x.png'>"+  "Temperature: " + day2.temp + "<br>" + "Min. Temperature: " + day2.tempmin + "<br>" + "Max. Temperature: " + day2.tempmax + "<br>" + "Feels Like: " + day2.feelslike + "<br>" + "Clouds: " + day2.clouds + "<br>" + "Humidity: " + day2.humidity + "<br>" + "Windspeed: " + day2.windspeed + "<br>" + "Windgust: " + day2.windgust +"</div>");
+        $(".marketing-site-content-section").append("<div class='day-5'>" +"<h4> Day 3</h4>" + "<br>"+ "<img class='icon' src='http://openweathermap.org/img/wn/" + day3img + "@2x.png'>"+  "Temperature: " + day3.temp + "<br>" + "Min. Temperature: " + day3.tempmin + "<br>" + "Max. Temperature: " + day3.tempmax + "<br>" + "Feels Like: " + day3.feelslike + "<br>" + "Clouds: " + day3.clouds + "<br>" + "Humidity: " + day3.humidity + "<br>" + "Windspeed: " + day3.windspeed + "<br>" + "Windgust: " + day3.windgust +"</div>");
+        $(".marketing-site-content-section").append("<div class='day-5'>" +"<h4> Day 4</h4>" + "<br>"+ "<img class='icon' src='http://openweathermap.org/img/wn/" + day4img + "@2x.png'>"+  "Temperature: " + day4.temp + "<br>" + "Min. Temperature: " + day4.tempmin + "<br>" + "Max. Temperature: " + day4.tempmax + "<br>" + "Feels Like: " + day4.feelslike + "<br>" + "Clouds: " + day4.clouds + "<br>" + "Humidity: " + day4.humidity + "<br>" + "Windspeed: " + day4.windspeed + "<br>" + "Windgust: " + day4.windgust +"</div>");
+        $(".marketing-site-content-section").append("<div class='day-5'>" + "<h4> Day 5</h4>" + "<br>"+ "<img class='icon' src='http://openweathermap.org/img/wn/" + day5img + "@2x.png'>"+ "Temperature: " + day5.temp + "<br>" + "Min. Temperature: " + day5.tempmin + "<br>" + "Max. Temperature: " + day5.tempmax + "<br>" + "Feels Like: " + day5.feelslike + "<br>" + "Clouds: " + day5.clouds + "<br>" + "Humidity: " + day5.humidity + "<br>" + "Windspeed: " + day5.windspeed + "<br>" + "Windgust: " + day5.windgust +"</div>");
         var cityresults = document.getElementById('firstcity');
         console.log(parseresults.list);
         //for (let i = 0; i < 5;  i++) {
@@ -148,12 +156,16 @@ fetch(queryURL).then(function(response) {
         usercity.value = "";
       //  }
     })
-    };
+    }
+    firstcall();
+    secondcall();
+};
     var returncity = localStorage.getItem('cities-saved');
     var returncityparsed = JSON.parse(returncity);
-    $(".fiveday").html(returncityparsed);
+    $(".marketing-site-content-section").html(returncityparsed);
+    localStorage.clear();
 
-weatherman();
+    
 
 /*fetch("http://api.openweathermap.org/data/2.5/weather?q=houston&appid=192a57d57d5d52c033c3ff8f0bae517c").then(function(event){
     return event.json();

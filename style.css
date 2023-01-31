@@ -74,6 +74,15 @@
     background-color: rgb(13, 182, 182);
     padding: 6px;
     border-radius: 10px;
+    margin-bottom: 5px;
+  }
+  #clear{
+    margin-top: 5px;
+    position: relative;
+    align-self: flex-end;
+    background-color: rgb(13, 182, 182);
+    padding: 6px;
+    border-radius: 10px;
   }
   h1{
     font-weight: 900;
@@ -162,11 +171,28 @@
         -ms-flex: 1 0 100%;
             flex: 1 0 100%;
   }
+  .right{
+    background-color: #8a8a8a;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+    -webkit-align-self: center;
+    -ms-flex-item-align: center;
+            -ms-grid-row-align: center;
+        align-self: center;
+-webkit-flex: 1 0 100%;
+    -ms-flex: 1 0 100%;
+        flex: 1 0 100%;
+  }
   
   .marketing-site-content-section .marketing-site-content-section-img img {
     width: 100%;
   }
   .fiveday {
+    width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -196,7 +222,7 @@
     }
   }
   
-  .marketing-site-content-section .marketing-site-content-section-block {
+  .right{
     padding: 1rem;
     -webkit-align-self: stretch;
         -ms-flex-item-align: stretch;
@@ -218,7 +244,7 @@
   }
   
   @media screen and (min-width: 40em) {
-    .marketing-site-content-section .marketing-site-content-section-block {
+    .right {
       -webkit-flex: 1 0 100%;
           -ms-flex: 1 0 100%;
               flex: 1 0 100%;
