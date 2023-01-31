@@ -1,7 +1,8 @@
 
 
 var button = document.getElementById('go');
-button.addEventListener('click', weatherman)
+var citiessaved = []
+button.addEventListener('click', weatherman);
 
 function weatherman(ev) {
 ev.preventDefault();
@@ -37,25 +38,28 @@ fetch(queryURL).then(function(response) {
         
     //}
     var fiveday = document.getElementById(city)
-    $(".marketing-site-content-section").append("<div class='fiveday "+city+"'><div class='right'id ='"+ city +"'><h3>" + city + "</h3><button id ='save'>Save</button><button id='clear'>Clear</button><p>" + "temperature: " + temp + " F \n feels like: " + feelslike +  " F \n min temp: " + tempmin + " F \n max temp: " + tempmax + " F \n pressure: " + pressure + "\n humidity: " + humidity + " %</p></div></div>");
+    $(".marketing-site-content-section").append("<div class='fiveday "+city+"'><div class='right'id ='"+ city +"'><h3>" + city + "</h3><button class='save'>Save</button><button class='clear'>Clear</button><p>" + "temperature: " + temp + " F \n feels like: " + feelslike +  " F \n min temp: " + tempmin + " F \n max temp: " + tempmax + " F \n pressure: " + pressure + "\n humidity: " + humidity + " %</p></div></div>");
     //var h3 = document.querySelectorAll("h3");
     //var todaycast = document.querySelectorAll("p");
     //for(i=0; i<10; i++){
      console.log(data);
-     var savebutton = document.getElementById("save");
-     var citiessaved = []
-     savebutton.addEventListener('click', function(){
+     var savebutton = document.getElementsByClassName("save");
+    
+     $(".save").click(function(){
         var citysaved = $("#"+city+"");
         citiessaved.push(citysaved.prevObject.context.all[24].innerHTML);
         var savecity = localStorage.setItem('cities-saved', JSON.stringify(citiessaved));
         console.log(citiessaved);
      })
-     var clearbutton = document.getElementById("clear");
-     clearbutton.addEventListener('click', function(){
-        citiessaved.splice(clearbutton.parentNode, 1);
-        var parentelement = clearbutton.parentElement;
-        parentelement.parentElement.remove();
-     })
+     function clear(ev){
+        ev.preventDefault();
+        citiessaved.splice($(".clear").parentNode, 1);
+        $(".fiveday").remove();
+        $(".marketing-site-content-section").remove();
+     }
+     $(".clear").click(clear);
+
+     
 
 })
 }
@@ -159,11 +163,12 @@ fetch(queryURL).then(function(response) {
     }
     firstcall();
     secondcall();
+
 };
     var returncity = localStorage.getItem('cities-saved');
     var returncityparsed = JSON.parse(returncity);
     $(".marketing-site-content-section").html(returncityparsed);
-    localStorage.clear();
+
 
     
 

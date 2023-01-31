@@ -68,7 +68,7 @@
     border-bottom-left-radius: 0%;
     
   }
-  #save{
+  .save{
     position: relative;
     align-self: flex-end;
     background-color: rgb(13, 182, 182);
@@ -76,7 +76,7 @@
     border-radius: 10px;
     margin-bottom: 5px;
   }
-  #clear{
+  .clear{
     margin-top: 5px;
     position: relative;
     align-self: flex-end;
