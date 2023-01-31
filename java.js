@@ -36,11 +36,21 @@ fetch(queryURL).then(function(response) {
         
     //}
 
-    $(".fiveday").append("<div class='marketing-site-content-section-block'><h3>" + city + "</h3><p>" + "temperature: " + temp + " F \n feels like: " + feelslike +  " F \n min temp: " + tempmin + " F \n max temp: " + tempmax + " F \n pressure: " + pressure + "\n humidity: " + humidity + " %</p></div>");
+    $(".fiveday").append("<div class='marketing-site-content-section-block' id ='"+ city +"'><h3>" + city + "</h3><button id ='save'>Save</button><p>" + "temperature: " + temp + " F \n feels like: " + feelslike +  " F \n min temp: " + tempmin + " F \n max temp: " + tempmax + " F \n pressure: " + pressure + "\n humidity: " + humidity + " %</p></div>");
     //var h3 = document.querySelectorAll("h3");
     //var todaycast = document.querySelectorAll("p");
     //for(i=0; i<10; i++){
      console.log(data);
+     var savebutton = document.getElementById("save");
+     var citiessaved = []
+     savebutton.addEventListener('click', function(){
+        var citysaved = $("#"+city+"");
+        citiessaved.push(citysaved);
+        var savecity = localStorage.setItem('cities-saved', JSON.stringify(citysaved.prevObject.context.all[24].innerHTML));
+
+
+        console.log(returncityparsed);
+     })
 })
 
 
@@ -139,6 +149,9 @@ fetch(queryURL).then(function(response) {
       //  }
     })
     };
+    var returncity = localStorage.getItem('cities-saved');
+    var returncityparsed = JSON.parse(returncity);
+    $(".fiveday").html(returncityparsed);
 
 weatherman();
 

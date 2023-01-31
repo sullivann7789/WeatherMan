@@ -68,6 +68,13 @@
     border-bottom-left-radius: 0%;
     
   }
+  #save{
+    position: relative;
+    align-self: flex-end;
+    background-color: rgb(13, 182, 182);
+    padding: 6px;
+    border-radius: 10px;
+  }
   h1{
     font-weight: 900;
     font-style: oblique;
