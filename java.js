@@ -8,6 +8,7 @@ function weatherman(ev) {
 ev.preventDefault();
 var usercity = document.getElementById('input');
 var city = usercity.value;
+citynospace= city.replace(/\s/g, '');
 var cityencoded = encodeURIComponent(city);
 console.log(cityencoded);
 var MrWeatherManKey = "192a57d57d5d52c033c3ff8f0bae517c";
@@ -37,7 +38,7 @@ fetch(queryURL).then(function(response) {
         
     //}
     var fiveday = document.getElementById(city)
-    $(".marketing-site-content-section").append("<div class='right'id ='"+ city +"'><h3>" + city + "</h3><button class='save'>Save</button><button class='clear'>Clear</button><p>" + "temperature: " + temp + " F \n feels like: " + feelslike +  " F \n min temp: " + tempmin + " F \n max temp: " + tempmax + " F \n pressure: " + pressure + "\n humidity: " + humidity + " %</p></div>");
+    $(".marketing-site-content-section").append("<div class='right'id ='"+ citynospace +"'><h3>" + city + "</h3><button class='save'>Save</button><button class='clear'>Clear</button><p>" + "temperature: " + temp + " F \n feels like: " + feelslike +  " F \n min temp: " + tempmin + " F \n max temp: " + tempmax + " F \n pressure: " + pressure + "\n humidity: " + humidity + " %</p></div>");
     //var h3 = document.querySelectorAll("h3");
     //var todaycast = document.querySelectorAll("p");
     //for(i=0; i<10; i++){
@@ -119,11 +120,11 @@ fetch(queryURL).then(function(response) {
                 windgust: JSON.stringify(parseresults.list[39].wind.gust)
             }
             var citygrab = document.getElementsByClassName(city);
-            $(".marketing-site-content-section").append("<div class='day-5'>" + "<h4> Day 1</h4>" + "<br>"+ "<img class='icon' src='http://openweathermap.org/img/wn/" + day1img + "@2x.png'>" + "Temperature: " + day1.temp + "<br>" + "Min. Temperature: " + day1.tempmin + "<br>" + "Max. Temperature: " + day1.tempmax + "<br>" + "Feels Like: " + day1.feelslike + "<br>" + "Clouds: " + day1.clouds + "<br>" + "Humidity: " + day1.humidity + "<br>" + "Windspeed: " + day1.windspeed + "<br>" + "Windgust: " + day1.windgust +"</div>");
-            $(".marketing-site-content-section").append("<div class='day-5'>" +"<h4> Day 2</h4>" + "<br>"+ "<img class='icon' src='http://openweathermap.org/img/wn/" + day2img + "@2x.png'>"+  "Temperature: " + day2.temp + "<br>" + "Min. Temperature: " + day2.tempmin + "<br>" + "Max. Temperature: " + day2.tempmax + "<br>" + "Feels Like: " + day2.feelslike + "<br>" + "Clouds: " + day2.clouds + "<br>" + "Humidity: " + day2.humidity + "<br>" + "Windspeed: " + day2.windspeed + "<br>" + "Windgust: " + day2.windgust +"</div>");
-            $(".marketing-site-content-section").append("<div class='day-5'>" +"<h4> Day 3</h4>" + "<br>"+ "<img class='icon' src='http://openweathermap.org/img/wn/" + day3img + "@2x.png'>"+  "Temperature: " + day3.temp + "<br>" + "Min. Temperature: " + day3.tempmin + "<br>" + "Max. Temperature: " + day3.tempmax + "<br>" + "Feels Like: " + day3.feelslike + "<br>" + "Clouds: " + day3.clouds + "<br>" + "Humidity: " + day3.humidity + "<br>" + "Windspeed: " + day3.windspeed + "<br>" + "Windgust: " + day3.windgust +"</div>");
-            $(".marketing-site-content-section").append("<div class='day-5'>" +"<h4> Day 4</h4>" + "<br>"+ "<img class='icon' src='http://openweathermap.org/img/wn/" + day4img + "@2x.png'>"+  "Temperature: " + day4.temp + "<br>" + "Min. Temperature: " + day4.tempmin + "<br>" + "Max. Temperature: " + day4.tempmax + "<br>" + "Feels Like: " + day4.feelslike + "<br>" + "Clouds: " + day4.clouds + "<br>" + "Humidity: " + day4.humidity + "<br>" + "Windspeed: " + day4.windspeed + "<br>" + "Windgust: " + day4.windgust +"</div>");
-            $(".marketing-site-content-section").append("<div class='day-5'>" + "<h4> Day 5</h4>" + "<br>"+ "<img class='icon' src='http://openweathermap.org/img/wn/" + day5img + "@2x.png'>"+ "Temperature: " + day5.temp + "<br>" + "Min. Temperature: " + day5.tempmin + "<br>" + "Max. Temperature: " + day5.tempmax + "<br>" + "Feels Like: " + day5.feelslike + "<br>" + "Clouds: " + day5.clouds + "<br>" + "Humidity: " + day5.humidity + "<br>" + "Windspeed: " + day5.windspeed + "<br>" + "Windgust: " + day5.windgust +"</div>");
+            $(".marketing-site-content-section").append("<div class='day-5 "+citynospace+"'>" + "<h4> Day 1</h4>" + "<br>"+ "<img class='icon' src='http://openweathermap.org/img/wn/" + day1img + "@2x.png'>" + "Temperature: " + day1.temp + "<br>" + "Min. Temperature: " + day1.tempmin + "<br>" + "Max. Temperature: " + day1.tempmax + "<br>" + "Feels Like: " + day1.feelslike + "<br>" + "Clouds: " + day1.clouds + "<br>" + "Humidity: " + day1.humidity + "<br>" + "Windspeed: " + day1.windspeed + "<br>" + "Windgust: " + day1.windgust +"</div>");
+            $(".marketing-site-content-section").append("<div class='day-5 "+citynospace+"'>" +"<h4> Day 2</h4>" + "<br>"+ "<img class='icon' src='http://openweathermap.org/img/wn/" + day2img + "@2x.png'>"+  "Temperature: " + day2.temp + "<br>" + "Min. Temperature: " + day2.tempmin + "<br>" + "Max. Temperature: " + day2.tempmax + "<br>" + "Feels Like: " + day2.feelslike + "<br>" + "Clouds: " + day2.clouds + "<br>" + "Humidity: " + day2.humidity + "<br>" + "Windspeed: " + day2.windspeed + "<br>" + "Windgust: " + day2.windgust +"</div>");
+            $(".marketing-site-content-section").append("<div class='day-5 "+citynospace+"'>" +"<h4> Day 3</h4>" + "<br>"+ "<img class='icon' src='http://openweathermap.org/img/wn/" + day3img + "@2x.png'>"+  "Temperature: " + day3.temp + "<br>" + "Min. Temperature: " + day3.tempmin + "<br>" + "Max. Temperature: " + day3.tempmax + "<br>" + "Feels Like: " + day3.feelslike + "<br>" + "Clouds: " + day3.clouds + "<br>" + "Humidity: " + day3.humidity + "<br>" + "Windspeed: " + day3.windspeed + "<br>" + "Windgust: " + day3.windgust +"</div>");
+            $(".marketing-site-content-section").append("<div class='day-5 "+citynospace+"'>" +"<h4> Day 4</h4>" + "<br>"+ "<img class='icon' src='http://openweathermap.org/img/wn/" + day4img + "@2x.png'>"+  "Temperature: " + day4.temp + "<br>" + "Min. Temperature: " + day4.tempmin + "<br>" + "Max. Temperature: " + day4.tempmax + "<br>" + "Feels Like: " + day4.feelslike + "<br>" + "Clouds: " + day4.clouds + "<br>" + "Humidity: " + day4.humidity + "<br>" + "Windspeed: " + day4.windspeed + "<br>" + "Windgust: " + day4.windgust +"</div>");
+            $(".marketing-site-content-section").append("<div class='day-5 "+citynospace+"'>" + "<h4> Day 5</h4>" + "<br>"+ "<img class='icon' src='http://openweathermap.org/img/wn/" + day5img + "@2x.png'>"+ "Temperature: " + day5.temp + "<br>" + "Min. Temperature: " + day5.tempmin + "<br>" + "Max. Temperature: " + day5.tempmax + "<br>" + "Feels Like: " + day5.feelslike + "<br>" + "Clouds: " + day5.clouds + "<br>" + "Humidity: " + day5.humidity + "<br>" + "Windspeed: " + day5.windspeed + "<br>" + "Windgust: " + day5.windgust +"</div>");
             var cityresults = document.getElementById('firstcity');
             console.log(parseresults.list);
             //for (let i = 0; i < 5;  i++) {
@@ -137,16 +138,30 @@ fetch(queryURL).then(function(response) {
             usercity.value = "";
             
             $(".save").click(function(){
-                var citysaved = $("#"+city+"");
-                citiessaved.push(citysaved.prevObject.context.all[24].innerHTML);
+                
+                var citysaved = $("#"+citynospace+"");
+                var citysavedforecast = $("."+citynospace+"");
+                var day1cast = citysavedforecast['0'].outerHTML;
+                var day2cast = citysavedforecast['1'].outerHTML;
+                var day3cast = citysavedforecast['2'].outerHTML;
+                var day4cast = citysavedforecast['3'].outerHTML;
+                var day5cast = citysavedforecast['4'].outerHTML;
+                console.log(citysavedforecast);
+                var citysavedhtml = citysaved['0'].outerHTML;
+                var combination = citysavedhtml + day1cast + day2cast + day3cast + day4cast + day5cast; 
+                citiessaved.push(combination);
                 var savecity = localStorage.setItem('cities-saved', JSON.stringify(citiessaved));
-                console.log(citiessaved);
+                
              })
             
             $(".clear").click(function(){
-                citiessaved.splice($(".clear").parentNode, 1);
-                $(".fiveday").html('');
-                $(".marketing-site-content-section").html('');
+                localStorage.clear();
+                //citiessaved.splice($(".clear").parentNode, 1);
+                var citysaved = $("#"+city+"");
+                citysaved.html('');
+                var citysavedforecast = $("."+citynospace+"");
+                citysavedforecast.html('');
+                //$(".marketing-site-content-section").html('');
                 localStorage.setItem('cities-saved', JSON.stringify(citiessaved));
              });
         //  }
@@ -157,6 +172,7 @@ fetch(queryURL).then(function(response) {
     var returncity = localStorage.getItem('cities-saved');
     var returncityparsed = JSON.parse(returncity);
     $(".marketing-site-content-section").html(returncityparsed);
+    
 
     
 
