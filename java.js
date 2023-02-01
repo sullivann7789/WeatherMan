@@ -12,9 +12,9 @@ var cityencoded = encodeURIComponent(city);
 console.log(cityencoded);
 var MrWeatherManKey = "192a57d57d5d52c033c3ff8f0bae517c";
 
-var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityencoded + "&appid=" + MrWeatherManKey + "&units=imperial"
+var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityencoded + "&appid=" + MrWeatherManKey + "&units=imperial"
 var div = document.getElementsByClassName('marketing-site-content-section-block');
-var forecastqueryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityencoded + "&appid=" + MrWeatherManKey + "&units=imperial"
+var forecastqueryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityencoded + "&appid=" + MrWeatherManKey + "&units=imperial"
 function firstcall() {
 fetch(queryURL).then(function(response) {
  return response.json();
