@@ -159,36 +159,50 @@ fetch(queryURL).then(function(response) {
                 citiessaved[citynospace] = combination;
                 var savecity = localStorage.setItem('cities-saved', JSON.stringify(citiessaved));
              })
-            
-            $(".clear").click(function(){
-                localStorage.clear();
+            var thyclearbootin = callidclick['0'].childNodes[2];
+            console.log(thyclearbootin);
+            $(thyclearbootin).click(function(){
+                console.log(JSON.parse(returncity));
+                delete citiessaved[citynospace];
                 //citiessaved.splice($(".clear").parentNode, 1);
-                var citysaved = $("#"+city+"");
+                var citysaved = $("#"+citynospace+"");
                 citysaved.html('');
                 var citysavedforecast = $("."+citynospace+"");
                 citysavedforecast.html('');
                 //$(".marketing-site-content-section").html('');
                 localStorage.setItem('cities-saved', JSON.stringify(citiessaved));
              });
+             for (let i = 0; i < Object.values(returncityparsed).length; i++) {
+                //Object.values(returncityparsed)[i];
+        
+                (JSON.parse(JSON.stringify(Object.values(returncityparsed)[i]).replace(/\[/g, "").replace(/\]/g, "")));
+                //console.log(derp);
+                $(".marketing-site-content-section").append(Object.values(returncityparsed)[i]); 
+                console.log((JSON.parse(JSON.stringify(Object.values(returncityparsed)[i]).replace(/\[/g, "").replace(/\]/g, "")))); 
+            }
         //  }
         })
         })
 
 };
 
+    $("#savedlocations").click(function(){
+        for (let i = 0; i < Object.values(returncityparsed).length; i++) {
+            //Object.values(returncityparsed)[i];
+    
+            (JSON.parse(JSON.stringify(Object.values(returncityparsed)[i]).replace(/\[/g, "").replace(/\]/g, "")));
+            //console.log(derp);
+            $(".marketing-site-content-section").append(Object.values(returncityparsed)[i]); 
+            console.log((JSON.parse(JSON.stringify(Object.values(returncityparsed)[i]).replace(/\[/g, "").replace(/\]/g, "")))); 
+        }
+    })
+
     var returncity = localStorage.getItem('cities-saved');
     var returncityparsed = JSON.parse(returncity);
     var citynames = Object.keys(returncityparsed)
     console.log(Object.values(returncityparsed)[0]);
     console.log(Object.values(returncityparsed).length);
-    for (let i = 0; i < Object.values(returncityparsed).length; i++) {
-        //Object.values(returncityparsed)[i];
 
-        (JSON.parse(JSON.stringify(Object.values(returncityparsed)[i]).replace(/\[/g, "").replace(/\]/g, "")));
-        //console.log(derp);
-        $(".marketing-site-content-section").append(Object.values(returncityparsed)[i]); 
-        console.log((JSON.parse(JSON.stringify(Object.values(returncityparsed)[i]).replace(/\[/g, "").replace(/\]/g, "")))); 
-    }
     console.log((JSON.stringify(Object.values(returncityparsed)).replace(/\[/g, "").replace(/\]/g, "")));
     var whoathatsalottacode = (JSON.stringify(Object.values(returncityparsed)).replace(/\[/g, "").replace(/\]/g, ""))
 
