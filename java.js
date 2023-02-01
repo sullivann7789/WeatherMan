@@ -53,11 +53,14 @@ fetch(queryURL).then(function(response) {
      })
      function clear(ev){
         ev.preventDefault();
-        citiessaved.splice($(".clear").parentNode, 1);
+
+     }
+     $(".clear").click(function(){
+        //citiessaved.splice($(".clear").parentNode, 1);
         $(".fiveday").remove();
         $(".marketing-site-content-section").remove();
-     }
-     $(".clear").click(clear);
+        localStorage.setItem('cities-saved', JSON.stringify(citiessaved));
+     });
 
      
 
@@ -168,7 +171,6 @@ fetch(queryURL).then(function(response) {
     var returncity = localStorage.getItem('cities-saved');
     var returncityparsed = JSON.parse(returncity);
     $(".marketing-site-content-section").html(returncityparsed);
-
 
     
 
