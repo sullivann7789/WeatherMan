@@ -1,7 +1,10 @@
 
 
 var button = document.getElementById('go');
-var citiessaved = []
+var returncity = localStorage.getItem('cities-saved');
+var returncityparsed = JSON.parse(returncity);
+console.log(returncityparsed)
+var citiessaved = returncityparsed;
 button.addEventListener('click', weatherman);
 
 function weatherman(ev) {
@@ -136,8 +139,10 @@ fetch(queryURL).then(function(response) {
         // $(".fiveday").text(day1 + "\n " + day2 + "\n " + day3 + "\n " + day4 + "\n " + day5);
             console.log(data.city.timezone);
             usercity.value = "";
-            
-            $(".save").click(function(){
+            var callidclick = $("#"+citynospace+"")
+            console.log(callidclick['0'].childNodes[1]);
+            var thysavebootin = callidclick['0'].childNodes[1];
+            $(thysavebootin).click(function(){
                 
                 var citysaved = $("#"+citynospace+"");
                 var citysavedforecast = $("."+citynospace+"");
@@ -148,10 +153,11 @@ fetch(queryURL).then(function(response) {
                 var day5cast = citysavedforecast['4'].outerHTML;
                 console.log(citysavedforecast);
                 var citysavedhtml = citysaved['0'].outerHTML;
-                var combination = citysavedhtml + day1cast + day2cast + day3cast + day4cast + day5cast; 
-                citiessaved.push(combination);
+                var combination = citysavedhtml + day1cast + day2cast + day3cast + day4cast + day5cast;
+                console.log(combination); 
+                //console.log(returncity);
+                citiessaved[citynospace] = combination;
                 var savecity = localStorage.setItem('cities-saved', JSON.stringify(citiessaved));
-                
              })
             
             $(".clear").click(function(){
@@ -169,9 +175,25 @@ fetch(queryURL).then(function(response) {
         })
 
 };
+
     var returncity = localStorage.getItem('cities-saved');
     var returncityparsed = JSON.parse(returncity);
-    $(".marketing-site-content-section").html(returncityparsed);
+    var citynames = Object.keys(returncityparsed)
+    console.log(Object.values(returncityparsed)[0]);
+    console.log(Object.values(returncityparsed).length);
+    for (let i = 0; i < Object.values(returncityparsed).length; i++) {
+        //Object.values(returncityparsed)[i];
+
+        (JSON.parse(JSON.stringify(Object.values(returncityparsed)[i]).replace(/\[/g, "").replace(/\]/g, "")));
+        //console.log(derp);
+        $(".marketing-site-content-section").append(Object.values(returncityparsed)[i]); 
+        console.log((JSON.parse(JSON.stringify(Object.values(returncityparsed)[i]).replace(/\[/g, "").replace(/\]/g, "")))); 
+    }
+    console.log((JSON.stringify(Object.values(returncityparsed)).replace(/\[/g, "").replace(/\]/g, "")));
+    var whoathatsalottacode = (JSON.stringify(Object.values(returncityparsed)).replace(/\[/g, "").replace(/\]/g, ""))
+
+    //$(".marketing-site-content-section").html(JSON.parse(whoathatsalottacode))
+
     
 
     
