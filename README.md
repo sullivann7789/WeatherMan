@@ -10,7 +10,7 @@
  
 ![Screenshot 2023-02-01 at 22-10-35 Screenshot](https://user-images.githubusercontent.com/119015927/216249987-9cad9ffe-c398-48c6-8fdf-454e3a349fd3.png)
 
-### About WeatherMan
+## About WeatherMan
 ### WeatherMan, as the title suggests, is a Weather Web App which runs on OpenWeather API, DayJs, JQuery, Fetch API, and Foundation 6 CSS Framework using JavaScript, CSS, and HTML as it's core languages.
 
 *Not only that, but WeatherMan is also completely responsive with all device sizes.*
