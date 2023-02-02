@@ -186,6 +186,21 @@ fetch(queryURL).then(function(response) {
         //  }
         })
         })
+        var clearstorage = document.getElementById('clearstorage');
+        var dsc = $("#DSC"); 
+        if(clearstorage.hasChildNodes()){
+            
+        } else{
+        $("#clearstorage").append("<button id='DSC'>Delete Saved Cities</button>");
+        }
+        //console.log((JSON.parse(JSON.stringify(Object.values(returncityparsed)[i]).replace(/\[/g, "").replace(/\]/g, "")))); 
+        $("#DSC").click(function(){
+            $(".day-5").remove();
+            $(".right").remove();
+            localStorage.clear();
+            
+            $("#DSC").remove();
+        })
 
 };
 
@@ -195,17 +210,10 @@ fetch(queryURL).then(function(response) {
     
             (JSON.parse(JSON.stringify(Object.values(returncityparsed)[i]).replace(/\[/g, "").replace(/\]/g, "")));
             //console.log(derp);
-            $(".marketing-site-content-section").append(Object.values(returncityparsed)[i]); 
-            $("#clearstorage").append("<button id='DSC'>Delete Stored Cities</button>");
-            console.log((JSON.parse(JSON.stringify(Object.values(returncityparsed)[i]).replace(/\[/g, "").replace(/\]/g, "")))); 
-            $("#DSC").click(function(){
-
-                localStorage.clear();
-                $("#marketing-content-section").html("");
-                $("#DSC").html("");
-            })
+            $(".marketing-site-content-section").append(Object.values(returncityparsed)[i]);
         }
-    })
+    });
+
 
     var returncity = localStorage.getItem('cities-saved');
     var returncityparsed = JSON.parse(returncity);
