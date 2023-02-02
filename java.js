@@ -37,6 +37,7 @@ fetch(queryURL).then(function(response) {
     var pressure = parseresults.main.pressure;
     var humidity = parseresults.main.humidity;
     var icon = parseresults.weather[0].icon;
+    var wind = parseresults.wind.speed;
     var cityresults = document.getElementById('firstcity');
     console.log(parseresults.weather[0].icon);
     //for (let i = 0; i < 5;  i++) {
@@ -48,7 +49,7 @@ fetch(queryURL).then(function(response) {
     //console.log(icon);
     //var currentimg = icon.replace(/\"/g, "");
     var fiveday = document.getElementById(city)
-    $(".marketing-site-content-section").append("<div class='right'id ='"+ citynospace +"'><h3>"+ dayjs().format('dddd')+" in " + city +"<img class='icon' src='http://openweathermap.org/img/wn/"+ icon +  "@2x.png'>"+ "</h3><button class='save'>Save</button><button class='clear'>Clear</button><p>" + "Temperature: " + temp + " F \n Feels like: " + feelslike +  " F \n Min Temp: " + tempmin + " F \n Max Temp: " + tempmax + " F \n Pressure: " + pressure + " hPa \n Humidity: " + humidity + " %</p></div>");
+    $(".marketing-site-content-section").append("<div class='right'id ='"+ citynospace +"'><h3>"+ dayjs().format('dddd')+" in " + city +"<img class='icon' src='http://openweathermap.org/img/wn/"+ icon +  "@2x.png'>"+ "</h3><button class='save'>Save</button><button class='clear'>Clear</button><p>" + "Temperature: " + temp + " F \n Feels like: " + feelslike +  " F \n Min Temp: " + tempmin + " F \n Max Temp: " + tempmax + " F \n Pressure: " + pressure + " hPa \n Humidity: " + humidity + " % " + "Wind Speed: " + wind + " Mp/h</p></div>");
     //var h3 = document.querySelectorAll("h3");
     //var todaycast = document.querySelectorAll("p");
     //for(i=0; i<10; i++){
