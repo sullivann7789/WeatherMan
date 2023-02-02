@@ -187,13 +187,14 @@
     flex-wrap: wrap;
     font-weight: 400;
     width: 200px;
-    height: 300px;
+    height:fit-content;
     color: #8a8a8a;
     flex-direction: row;
   }
 
   h4{
     text-align: center;
+    width: 100%;
   }
 
   
