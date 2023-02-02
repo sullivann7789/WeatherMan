@@ -11,13 +11,13 @@
 ![Screenshot 2023-02-01 at 22-10-35 Screenshot](https://user-images.githubusercontent.com/119015927/216249987-9cad9ffe-c398-48c6-8fdf-454e3a349fd3.png)
 
 ### About WeatherMan
-#### WeatherMan, as the title suggests, is a Weather Web App which runs on OpenWeather API, DayJs, JQuery, Fetch API, and Foundation 6 CSS Framework using JavaScript, CSS, and HTML as it's core languages. 
+### WeatherMan, as the title suggests, is a Weather Web App which runs on OpenWeather API, DayJs, JQuery, Fetch API, and Foundation 6 CSS Framework using JavaScript, CSS, and HTML as it's core languages.
 
-Not only that, but WeatherMan is also completely responsive with all device sizes.
+*Not only that, but WeatherMan is also completely responsive with all device sizes.*
 
-WeatherMan can provide it's users with a complete, bug-free, simple and easy-to-use interactive and manipulatble interface. Users have the option to list any city they desire, and have a 6-day forecast display for each and every city of their choosing. Not only that, but they are given the following information:
+WeatherMan can provide it's users with a complete, bug-free, simple and easy-to-use interactive and manipulatble interface. Users have the option to list any city they desire, and have a 6-day forecast display for each and every city of their choosing. Specifically, they are given the following information:
 
-(All Units of Measurement are Imperial)
+-(All Units of Measurement are Imperial)-
 ### Current Day Display:
 - Weather Description (clouds, rain, snow, clear sky, etc.)
 - Current Temp
