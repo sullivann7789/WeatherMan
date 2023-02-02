@@ -54,6 +54,15 @@
     font-size: larger;
     border-radius: 20px;
   }
+  button:active{
+    color:rgb(60, 171, 83);
+    background-color: rgb(0, 227, 231);
+    padding: 7px;
+
+  }
+  button:hover{
+    background-color: rgb(23, 165, 168);;
+  }
   #go{
     color: peachpuff;
     font-style: italic;
@@ -67,6 +76,10 @@
     border-top-left-radius: 0%;
     border-bottom-left-radius: 0%;
     
+  }
+  #go:active{
+    background-color:#0f6198;
+    padding: 8px;
   }
   .save{
     position: relative;

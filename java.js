@@ -136,7 +136,7 @@ fetch(queryURL).then(function(response) {
             $(".marketing-site-content-section").append("<div class='day-5 "+citynospace+"'>" +"<h4>"+dayjs().add(4, 'day').format('dddd')+"</h4>" + "<br>"+ "<img class='icon' src='http://openweathermap.org/img/wn/" + day4img + "@2x.png'>"+  "Temperature: " + day4.temp + " F<br>" + "Min. Temperature: " + day4.tempmin + " F<br>" + "Max. Temperature: " + day4.tempmax + " F<br>" + "Feels Like: " + day4.feelslike + "<br>" + "Clouds: " + day4.clouds + "<br>" + "Humidity: " + day4.humidity +"%"+  "<br>" + "Windspeed: " + day4.windspeed + " Mp/h"+"<br>" + "Windgust: " + day4.windgust +" Mp/h"+"</div>");
             $(".marketing-site-content-section").append("<div class='day-5 "+citynospace+"'>" + "<h4>"+dayjs().add(5, 'day').format('dddd')+"</h4>" + "<br>"+ "<img class='icon' src='http://openweathermap.org/img/wn/" + day5img + "@2x.png'>"+ "Temperature: " + day5.temp + " F<br>" + "Min. Temperature: " + day5.tempmin + " F<br>" + "Max. Temperature: " + day5.tempmax + " F<br>" + "Feels Like: " + day5.feelslike + "<br>" + "Clouds: " + day5.clouds + "<br>" + "Humidity: " + day5.humidity +"%"+  "<br>" + "Windspeed: " + day5.windspeed + " Mp/h"+"<br>" + "Windgust: " + day5.windgust +" Mp/h"+"</div>");
             var cityresults = document.getElementById('firstcity');
-            console.log(parseresults.list);
+            console.log(data);
             //for (let i = 0; i < 5;  i++) {
             //  var list = $("marketing-site-content-section-block").append('<ul>');
                 //var listings = list.append('<li>');
@@ -212,17 +212,32 @@ fetch(queryURL).then(function(response) {
             //console.log(derp);
             $(".marketing-site-content-section").append(Object.values(returncityparsed)[i]);
         }
+        var clearstorage = document.getElementById('clearstorage');
+        var dsc = $("#DSC"); 
+        if(clearstorage.hasChildNodes()){
+            
+        } else{
+        $("#clearstorage").append("<button id='DSC'>Delete all Cities and Saved Info</button>");
+        }
+        //console.log((JSON.parse(JSON.stringify(Object.values(returncityparsed)[i]).replace(/\[/g, "").replace(/\]/g, "")))); 
+        $("#DSC").click(function(){
+            $(".day-5").remove();
+            $(".right").remove();
+            localStorage.clear();
+            
+            $("#DSC").remove();
+        })
     });
 
 
-    var returncity = localStorage.getItem('cities-saved');
-    var returncityparsed = JSON.parse(returncity);
-    var citynames = Object.keys(returncityparsed)
+    //var returncity = localStorage.getItem('cities-saved');
+    //var returncityparsed = JSON.parse(returncity);
+    //var citynames = Object.keys(returncityparsed)
     console.log(Object.values(returncityparsed)[0]);
     console.log(Object.values(returncityparsed).length);
 
     console.log((JSON.stringify(Object.values(returncityparsed)).replace(/\[/g, "").replace(/\]/g, "")));
-    var whoathatsalottacode = (JSON.stringify(Object.values(returncityparsed)).replace(/\[/g, "").replace(/\]/g, ""))
+    //var whoathatsalottacode = (JSON.stringify(Object.values(returncityparsed)).replace(/\[/g, "").replace(/\]/g, ""))
 
     //$(".marketing-site-content-section").html(JSON.parse(whoathatsalottacode))
 
