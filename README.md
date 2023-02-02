@@ -22,7 +22,7 @@ WeatherMan can provide it's users with a complete, bug-free, simple and easy-to-
 - What The Conditions Feel Like
 - Minimum Temp
 - Maximum Temp
-- Pressure (HpA)
+- Pressure (hPa)
 - Humidity (%)
 - Windspeed 
 - A corresponding Weather Icon to match the current conditons (Sunny, Cloudy, Rain, Snow, etc.)
@@ -33,7 +33,6 @@ WeatherMan can provide it's users with a complete, bug-free, simple and easy-to-
 - What The Conditions Will Feel Like
 - Minimum Temp
 - Maximum Temp
-- Pressure (HpA)
 - Humidity (%)
 - Windspeed 
 - Windgust
