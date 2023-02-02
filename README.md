@@ -50,7 +50,7 @@ Users also have the option to save and delete weather details by city. Once a ci
 
 If a user decides that he/she would like to delete the city and it's corresponding data, all they will have to do is click the Clear button on the right hand side of their city.
 
-If their city is Saved, than they will have to delete their city with the Delete Saved Cities button at the bottom, which effectively clears all storage and deletes any weather information displayed on the screen.
+If their city is Saved, then they will have to delete their city with the Delete Saved Cities button at the bottom, which effectively clears all storage and deletes any weather information displayed on the screen.
 
 Simple enough right? 
 
