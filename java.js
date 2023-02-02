@@ -201,7 +201,7 @@ fetch(queryURL).then(function(response) {
             $("#DSC").click(function(){
 
                 localStorage.clear();
-                $("#main-content-section").html("");
+                $("#marketing-content-section").html("");
                 $("#DSC").html("");
             })
         }
