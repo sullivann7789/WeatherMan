@@ -84,6 +84,16 @@
     padding: 6px;
     border-radius: 10px;
   }
+  #DSC{
+    margin-top: 5px;
+    position:relative;
+    justify-content: center;
+    justify-self: center;
+    width: 100%;
+    background-color: rgb(13, 182, 182);
+    padding: 6px;
+    border-radius: 10px;
+  }
   h1{
     font-weight: 900;
     font-style: oblique;

@@ -5,6 +5,9 @@ var returncity = localStorage.getItem('cities-saved');
 var returncityparsed = JSON.parse(returncity);
 console.log(returncityparsed)
 var citiessaved = returncityparsed;
+if(citiessaved == null){
+   var citiessaved = {};
+}
 button.addEventListener('click', weatherman);
 
 function weatherman(ev) {
@@ -161,25 +164,21 @@ fetch(queryURL).then(function(response) {
              })
             var thyclearbootin = callidclick['0'].childNodes[2];
             console.log(thyclearbootin);
-            $(thyclearbootin).click(function(){
+            $(".clear").click(function(){
                 console.log(JSON.parse(returncity));
-                delete citiessaved[citynospace];
+                var parent = this.parentNode
+                var parentid = parent.id
+                console.log(parent.id);
+                delete citiessaved[parentid];
+                $("."+parentid+"").remove()
                 //citiessaved.splice($(".clear").parentNode, 1);
-                var citysaved = $("#"+citynospace+"");
-                citysaved.html('');
-                var citysavedforecast = $("."+citynospace+"");
-                citysavedforecast.html('');
+                //var citysaved = $("#"+citynospace+"");
+                $("#"+parentid+"").remove();
+                //var citysavedforecast = $("."+citynospace+"");
+                //citysavedforecast.html('');
                 //$(".marketing-site-content-section").html('');
                 localStorage.setItem('cities-saved', JSON.stringify(citiessaved));
              });
-             for (let i = 0; i < Object.values(returncityparsed).length; i++) {
-                //Object.values(returncityparsed)[i];
-        
-                (JSON.parse(JSON.stringify(Object.values(returncityparsed)[i]).replace(/\[/g, "").replace(/\]/g, "")));
-                //console.log(derp);
-                $(".marketing-site-content-section").append(Object.values(returncityparsed)[i]); 
-                console.log((JSON.parse(JSON.stringify(Object.values(returncityparsed)[i]).replace(/\[/g, "").replace(/\]/g, "")))); 
-            }
         //  }
         })
         })
@@ -193,7 +192,14 @@ fetch(queryURL).then(function(response) {
             (JSON.parse(JSON.stringify(Object.values(returncityparsed)[i]).replace(/\[/g, "").replace(/\]/g, "")));
             //console.log(derp);
             $(".marketing-site-content-section").append(Object.values(returncityparsed)[i]); 
+            $("#clearstorage").append("<button id='DSC'>Delete Stored Cities</button>");
             console.log((JSON.parse(JSON.stringify(Object.values(returncityparsed)[i]).replace(/\[/g, "").replace(/\]/g, "")))); 
+            $("#DSC").click(function(){
+
+                localStorage.clear();
+                $("#main-content-section").html("");
+                $("#DSC").html("");
+            })
         }
     })
 
